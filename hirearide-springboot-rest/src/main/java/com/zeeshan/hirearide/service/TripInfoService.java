@@ -11,7 +11,7 @@ import com.zeeshan.hirearide.domain.Trip;
  *  
  * 
  * 
- * @author Muhamad Zeeshan
+ * @author Muhammad Zeeshan
  * @version 1.0.0
  * @category Service interface
  * @since July 2016

@@ -11,6 +11,18 @@ import org.springframework.web.client.RestTemplate;
 import com.zeeshan.hirearide.ui.model.Car;
 import com.zeeshan.hirearide.ui.model.TripInfoBean;
 
+/**
+ *<h1>Interface TripInfoService</h1>
+ * provides service layer functionality mainly related to Trip Information or Booking Information
+ *  
+ * 
+ * 
+ * @author Muhammad Zeeshan
+ * @version 1.0.0
+ * @category Service Class
+ * @since July 2016
+ *
+ */
 @Service
 public class MyRestTemplateService {
 

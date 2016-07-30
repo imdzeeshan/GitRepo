@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+
+<title>Hire A Ride - Available Rides</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" th:href="@{/css/loginstyle.css}"
+	href="../../css/loginstyle.css" />
+<script src="js/bootstrap.js"></script>
+
+</head>
+<body>
+
+<div layout:fragment="content" class="container" >
+<div  class="container">
+<div class="rows" 
+style="    text-align: -webkit-center;"
+>
+
+<div class=" successmodal-container " style="padding-top:0;" >
+<h1>Congratulations <span th:text="${tripInfo.username}"> </span> !<br/> You have booked your ride. </h1>
+<div class="modal-content" style="text-align: left;">
+<div class="modal-body">
+    
+       				<div class="form-group">
+       				<label class="col-md-5 control-label">Car Model :</label>
+							<div class="col-md">
+								<label id="comp" title="Company and model of the selected Car" th:text="${tripInfo.car.company}"> </label>
+														
+							</div>
+					</div>
+				
+					<div class="form-group">
+       				<label class="col-md-5 control-label">Seating/Luggage Capacity :</label>
+							<div class="col-md">
+								
+											<span class="glyphicon glyphicon-user" title="seating capacity of car" ></span> <span th:text="${tripInfo.car.seating_capacity}"></span>
+											&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-briefcase" title="luggage capacity of car" ></span>	<span th:text="${tripInfo.car.luggage_capacity}"></span>		
+							</div>
+					</div> 
+					<div class="form-group">
+       				<label class="col-md-5 control-label">Charges per day :</label>
+							<div class="col-md">
+								<label id="charge" th:text="${'$' + tripInfo.car.trip_charge_perday}"> </label>
+														
+							</div>
+					</div>
+					<div class="form-group">
+       				<label class="col-md-5 control-label">Pickup Place :</label>
+							<div class="col-md">
+								<label id="pickupPlace" th:text="${tripInfo.pickupPlace}" title="Place you have selected to pick you from"> </label>
+														
+							</div>
+					</div>
+					<div class="form-group">
+       				<label class="col-md-5 control-label">Pickup Datetime :</label>
+							<div class="col-md">
+								<label id="pickupDatetime" th:text="${#dates.format(tripInfo.pickupDatetime, 'dd-MMM-yyyy hh:mm a')}" title="when you want your ride to pick you up "> </label>
+														
+							</div>
+					</div>
+					<div class="form-group">
+       				<label class="col-md-5 control-label">Drop Place :</label>
+							<div class="col-md">
+								<label id="dropPlace" th:text="${tripInfo.dropPlace}" title="where you will reach at the end of happy journey"> </label>
+														
+							</div>
+					</div>
+					<div class="form-group">
+       				<label class="col-md-5 control-label">Drop Datetime :</label>
+							<div class="col-md">
+								<label id="dropDatetime" th:text="${#dates.format(tripInfo.dropDatetime, 'dd-MMM-yyyy hh:mm a')}" title="scheduled time to arrive/return to your place"> </label>
+														
+							</div>
+					</div>
+					<div class="form-group">
+       				<label class="col-md-5 control-label">Your Name :</label>
+							<div class="col-md">
+									<label id="dropDatetime" th:text="${tripInfo.username}" title=""> </label>
+													
+							</div>
+					</div>
+					<div class="form-group">
+       				<label class="col-md-5 control-label">Your Email :</label>
+							<div class="col-md">
+								<label id="dropDatetime" th:text="${tripInfo.email}" title=""> </label>
+														
+							</div>
+					</div>
+					<div class="form-group">
+       			
+							 <div class="well well-sm" style="background-color: #005f0f; color:white;text-align:center;">
+								<h2 th:text="${'Total Charge :     $ '+tripInfo.totalCharge}" title="Total charge applicable for this trip." > </h2>
+														
+							</div>
+					
+       			
+							<a href="#" th:href="@{/}" class="btn pull-left" title="start with changed source and destinations">Book More Rides</a>
+						
+					</div>
+					
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+	
+</body>
+</html>

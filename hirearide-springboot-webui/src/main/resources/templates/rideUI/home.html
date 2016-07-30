@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Hire A Ride - Home </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" th:href="@{/css/loginstyle.css}"
+	href="../../css/loginstyle.css" />
+</head>
+<body style="background: url('carbg.jpg') no-repeat center;-webkit-background-size: cover; 
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
+  
+<div layout:fragment="content" class="container" >
+
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Book Your Ride Now</h1><br/>
+		<form id="tripForm" th:action="@{/form}" th:object="${tripInfo}"
+			action="#" method="post" >
+			<div th:if="${#fields.hasErrors('pickupPlace')}" class="alert alert-error">
+				<span  th:if="${#fields.hasErrors('pickupPlace')}" th:errors="*{pickupPlace}">
+					Validation error</span>
+			</div>
+			
+			<input type="hidden" th:field="*{id}"	th:class="${#fields.hasErrors('id')} ? 'field-error'" /> 
+				
+			<input type="text" th:field="*{pickupPlace}"  placeholder="Pick Up Place" th:class="${#fields.hasErrors('pickupPlace')} ? 'field-error'" />
+				<input id="pickupDate" th:field="*{pickupDatetime}"  placeholder="Pick Up Date-time" type="datetime-local" value="" />
+				
+			
+			<input type="text" th:field="*{dropPlace}"  placeholder="Drop Place"  />
+			<input id="pickupDate" th:field="*{dropDatetime}"  placeholder="Drop Date-time" type="datetime-local" value="" />
+	
+		<input type="submit" value="Search Rides" class="loginmodal-submit" />
+		</form>
+		</div>
+		</div>
+		
+	
+	</div>
+	
+</body>
+</html>

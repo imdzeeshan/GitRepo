@@ -12,6 +12,7 @@ import java.util.List;
 
 import com.zeeshan.hirearide.ui.model.Car;
 
+//was writing to work with the get and post requests of REST using gson.
 public class HireARideRestClient {
 
 	@SuppressWarnings("unchecked")

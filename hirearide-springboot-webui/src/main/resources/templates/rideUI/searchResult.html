@@ -8,72 +8,116 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="js/searchCars.js"></script>
 <script src="js/bootstrap.js"></script>
-<script >
+<script>
 function setValuesInModel(i)
 {
-	//method for setting the values of selected car in model using jquery assigning the values to model contents from cardiv's div.
 	
-	$("#cid").val(i);
+	console.log("i m in "+$("#ic"+i).text()+"   "+$("#silentField"+i).text());
+	
+	$('#comp').html($("#ic"+i).html());
+	$('#silentFieldx').html($("#silentField"+i).text());
+	$('#capac').html($("#isc"+i).html());
+	$('#charge').html($("#btnC"+i).html());
+	
 	$("#compField").val($("#ic"+i).text());
-	$("#modelField").val($("#im"+i).text());
+
 	$("#scapacField").val($("#isc1"+i).text());
 	$("#lcapacField").val($("#isc2"+i).text());
 	$("#perDayChargeField").val($("#btnC1"+i).text());
 	
-	$('#comp').html($("#ic"+i).html());
-	$('#capac').html($("#isc"+i).html());
-	$('#charge').html($("#btnC"+i).html());
+	
+}
+</script>
+<script th:inline="javascript">
+function bookThisRide()
+{	
+	var tripInfoBean = new Object();
+	var d1 =new Date();
+	var d2 = new Date();
+	/*<![CDATA[*/
+	tripInfoBean.car_id = $("#silentFieldx").text();
+	tripInfoBean.pickupPlace = /*[[${tripInfo.pickupPlace}]]*/ '';
+	tripInfoBean.pickupDatetime = /*[[${tripInfo.pickupDatetime}]]*/ ''+d1;
+	tripInfoBean.dropPlace = /*[[${tripInfo.dropPlace}]]*/ ''; 
+	tripInfoBean.dropDatetime = /*[[${tripInfo.dropDatetime}]]*/ ''+d1;
+	tripInfoBean.username = $("#username").val();
+	tripInfoBean.email = $("#emailField").val();
+	/*]]>*/
+	
+	console.log(JSON.stringify(tripInfoBean));
+	
+	$.ajax({
+		 headers: { 
+		        'Accept': 'application/json',
+		        'Content-Type': 'application/json' 
+		    },
+		type : "POST",
+        url: "http://localhost:8080/hireARide1/bookRide",
+        	data :  JSON.stringify(tripInfoBean),
+		dataType : 'json',
+		success : function(response) {
+
+			if(!jQuery.isEmptyObject(response))
+				{
+				 if(response){
+					 $("#chargeField").val(response.totalCharge);
+					 
+					 console.log(response.totalCharge);
+						
+					 document.getElementById("bookForm").submit()
+				 }
+				 else
+						
+						$('#responseStatus').html('Sorry! This Ride Could not be booked.');
+				
+				}
+			else
+				{
+				
+					$('#responseStatus').html('Error : Request could not be sent.');
+				
+				}
+				
+		},
+		error : function() {
+			$('#responseStatus').html("Problem while sending request");	
+		}
+
+   
+    });
+
 	
 	
 }
 </script>
-
 </head>
 <body>
 
 <div layout:fragment="content" class="container" >
 <div  class="container">
 <div class="row" id="cardiv">
-<!-- Div with the searched Available Cars  -->
-<h1 th:if="${#lists.isEmpty(cars)}" style="text-align:center;">Sorry! There are No Cars available. </h1>
-<div th:each="car : ${cars}" class="col-md-3" style="padding-left: 2px;padding-right: 2px;">
-<div style="margin: 10px;border: 1px solid #454545;padding-left: 10px;padding-right: 10px;">
-	<h1 th:id="'ic'+${car.id}"  th:text="${car.company}" style="margin-bottom:0;"> </h1><h1 style="margin-top:0;"><small th:id="'im'+${car.id}"  th:text="${car.model}" > </small></h1>
-	<p th:id="'isc'+${car.id}"><span class="glyphicon glyphicon-user" title="seating capacity of car" ></span>
-		<span th:id="'isc1'+${car.id}"  th:text="${car.seating_capacity}"> </span> &nbsp;&nbsp;&nbsp;&nbsp;    
-		<span class="glyphicon glyphicon-briefcase" title="luggage capacity of car" ></span> 
-		<span th:id="'isc2'+${car.id}" th:text="${car.luggage_capacity}"></span>
-	</p>
-<p>
-	<button th:id="'btnC'+${car.id}" class="btn btn-info btn-md btn-block" data-toggle="modal" data-backdrop="static" data-target="#myModal"
-	th:onclick="'javascript:setValuesInModel(\'' + ${car.id} + '\');'"  title="Charges for single day. Click to Book Now">
- 		<span class="glyphicon glyphicon-usd"></span>
- 		<span th:id="'btnC1'+${car.id}" th:text="${car.trip_charge_perday}">  </span></button> 
-</p>
-</div> 
-</div>
 </div>
 
-
+<span id="silentFieldx" style="visibility:hidden;"></span>
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
-     <form id="bookForm" th:action="@{/ridebook}" th:object="${tripInfo}" method="post"
-			action="#">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" >&times;</button>
         <h4 class="modal-title"> Book Now </h4>
       </div>
       <div class="modal-body">
-     
+      <form id="bookForm" th:action="@{/ridebook}" th:object="${tripInfo}" method="post"
+			action="#">
        				<div class="form-group">
        				<label class="col-md-5 control-label">Car Model :</label>
 							<div class="col-md">
-								<label id="comp" title="Company and model of the selected Car" > </label>
+								<label id="comp" title="Company and model of the selected Car"> </label>
 														
 							</div>
 					</div>
@@ -134,11 +178,10 @@ function setValuesInModel(i)
 														
 							</div>
 					</div>
-					<input type="hidden"  id="cid" th:field="*{car_id}" />
-					<input type="hidden"  id="pup1" th:field="*{pickupPlace}" />
-					<input  type="datetime-local" style="visibility:hidden;" id="pudt1" th:field="*{pickupDatetime}" />
-					<input type="hidden"  id="drpp1" th:field="*{dropPlace}" />
-					<input  type="datetime-local" style="visibility:hidden;"  id="drpdt1" th:field="*{dropDatetime}" />
+					<input type="hidden"  id="chargeField1" th:field="*{pickupPlace}" />
+					<input  type="datetime-local" style="visibility:hidden;" id="compField1" th:field="*{pickupDatetime}" />
+					<input type="hidden"  id="modelField1" th:field="*{dropPlace}" />
+					<input  type="datetime-local" style="visibility:hidden;"  id="scapacField1" th:field="*{dropDatetime}" />
 					
 					<input type="hidden"  id="chargeField" th:field="*{totalCharge}" />
 					<input type="hidden"  id="compField" th:field="*{car.company}" />
@@ -147,17 +190,16 @@ function setValuesInModel(i)
 					<input type="hidden"  id="lcapacField" th:field="*{car.luggage_capacity}" />
 					<input type="hidden"  id="perDayChargeField" th:field="*{car.trip_charge_perday}" />
 				
-					
+					</form>
 			
       </div>
       <div class="modal-footer">
-      	<span id="responseStatus" style="color:red;" th:text="${responseText}" ></span><br/>
+      	<span id="responseStatus" style="color:red;"></span><br/>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        	<input type="submit" class="btn btn-success" value="Done" /> 
+        	<button type="button" class="btn green" onClick="bookThisRide();">  Done</button>
         	
         
       </div>
-      </form>
     </div>
 
   </div>
