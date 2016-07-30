@@ -20,7 +20,7 @@ public interface CarDAO {
 	/**
 	 * persists Car POJO
 	 *	
-	 * @param car
+	 * @param car -- Object of Car
 	 */
 	void saveCar(Car car);
 
@@ -34,33 +34,33 @@ public interface CarDAO {
 
 	/**
 	 * meant for returning a Car of particular model 
-	 * <i>not yet implemented</i>
+	 * <br><i>not yet implemented</i>
 	 * 
-	 * @param model of car
+	 * @param model -- model of car
 	 * @return Car
 	 */
 	Car findByModel(String model);
 
 	/**
 	 * meant for deleting Car Object based on particular model
-	 * <i>not yet implemented</i>
+	 * <br><i>not yet implemented</i>
 	 * 
-	 * @param model of car
+	 * @param model -- model of car
 	 */
 	void deleteCarByModel(String model); 
 
 	/**
 	 * to update an existing Car details 
-	 * <i>not yet implemented</i>
+	 * <br><i>not yet implemented</i>
 	 * 
-	 * @param car- existing car object whose details are to be updated
+	 * @param car -- existing car object whose details are to be updated
 	 */
 	void updateCar(Car car);
 
 	/**
 	 * provides a unique car by searching the database for a car record of particular id.
 	 * 
-	 * @param id - row id of car in db
+	 * @param id -- row id of car in db
 	 * @return Car object
 	 */
 	Car findById(Integer id);

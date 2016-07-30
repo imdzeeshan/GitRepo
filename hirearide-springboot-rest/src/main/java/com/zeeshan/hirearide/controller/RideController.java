@@ -44,11 +44,11 @@ public class RideController {
 	
 	/**
 	 * <b>fetchCars</b> method 
-	 * Attached with the RequestMapping to "/getCars".
-	 * Accepts GET request
-	 * Calls CarService's findAllAvailableCars() method which returns the list of Cars.
-	 * 
-	 * @return List of Car objects(List<Car>) 
+	 * <ul><li>Attached with the RequestMapping to "/getCars".
+	 * <li>Accepts GET request
+	 * <li>Calls CarService's findAllAvailableCars() method which returns the list of Cars.
+	 * </ul>
+	 * @return List<Car> -- List of Car objects(List<Car>) 
 	 */
 	@RequestMapping("/getCars")
 	public List<Car> fetchCars(){
@@ -61,13 +61,13 @@ public class RideController {
 	
 	/**
 	 * <b>doBooking</b> method 
-	 * Attached with the RequestMapping to "/bookRide".
-	 * Accepts POST request with expected TripInfoBean Object in RequestBody.
-	 * Invokes prepareAndSaveTripInfo(TripInfoBean tripInfoBean) method of TripInfoService Class.
-	 * result of this method i.e. TripInfoBean Object is returned.
+	 * <ul><li>Attached with the RequestMapping to "/bookRide".
+	 * <li>Accepts POST request with expected TripInfoBean Object in RequestBody.
+	 * <li>Invokes prepareAndSaveTripInfo(TripInfoBean tripInfoBean) method of TripInfoService Class.
+	 * <li>result of this method i.e. TripInfoBean Object is returned.
+	 * </ul>
 	 * 
-	 * 
-	 * @param tripInfoBean
+	 * @param tripInfoBean -- TripInfoBean Object 
 	 * 
 	 * @return TripInfoBean Object 
 	 */

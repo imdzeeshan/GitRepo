@@ -2,8 +2,32 @@ package com.zeeshan.hirearide.ui.model;
 
 import java.math.BigDecimal;
 
+/**
+ *<h1>Car</h1>
+ * It is a Bean Class
+ * holds the data for Car Object
+ *  
+ *  
+ * 
+ * @author Muhamad Zeeshan
+ * @version 1.0.0
+ * @category Bean class
+ * @since July 2016
+ *
+ */
 public class Car {
 
+	
+	/**
+	 *  id               -- uniquley identifies an object/record
+	 *  company          -- maker of car
+	 *  model            -- model of a car 
+	 *  seating_capacity -- seating capacity of a car
+	 *  luggage_capacity -- luggage capacity of a car (no of travelling bags)
+	 *  trip_charge_perday -- charge for renting a car for a day in USD 
+	 *  status           -- status field currently for future use
+	 */
+	
 	
 	private int id;
 

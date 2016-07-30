@@ -25,18 +25,20 @@ public class TripDAOImpl extends AbstractDao implements TripDAO{
 
 
 	public void saveTrip(Trip tripinfo) {
-		persist(tripinfo);
+		persist(tripinfo); // saving tripdetails
 
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Trip> findAllTripInfos() {
-		Criteria criteria = getSession().createCriteria(Trip.class);
+		
+		Criteria criteria = getSession().createCriteria(Trip.class);  
 		return (List<Trip>) criteria.list();
 	}
 
 
 	public Trip findByUser(Integer userId) {
+		// selecting unique Trip Object according to the userId in parameter
 		Criteria criteria = getSession().createCriteria(Trip.class);
 		criteria.add(Restrictions.eq("user.id", userId));
 		return (Trip) criteria.uniqueResult();

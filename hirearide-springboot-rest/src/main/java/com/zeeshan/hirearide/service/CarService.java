@@ -19,47 +19,47 @@ public interface CarService {
 
 	/**
 	 * persists Car Object
-	 * <i> not yet implemented </i>
+	 * <br><i> not yet implemented </i>
 	 * 
-	 * @param car - Car Object
+	 * @param car -- Car Object
 	 */
 	void saveCar(Car car);
 	
 	
 	/** 
-	 * searches for all available cars and returns in a list 
-	 * uses CarDAO
-	 * 
-	 * @return List<Car> - list of cars
+	 * <ul><li>searches for all available cars and returns in a list 
+	 * <li>uses CarDAO
+	 * </ul>
+	 * @return List<Car> -- list of cars
 	 */
 	List<Car> findAllAvailableCars();
 	
 	
 	/**
 	 * meant for returning a Car of particular model using CarDAO
-	 * <i>not yet implemented</i>
+	 * <br><i>not yet implemented</i>
 	 * 
-	 * @param model of car
-	 * @return Car
+	 * @param model -- model of car
+	 * @return Car  -- Object of Car
 	 */
 	Car findByModel(String model);
 	
 	
 	/**
 	 * meant for deleting Car Object based on particular model using CarDAO
-	 * <i>not yet implemented</i>
+	 * <br><i>not yet implemented</i>
 	 * 
-	 * @param model of car
+	 * @param model -- model of car
 	 */
 	void deleteCarByModel(String model); 
 		
 	
 	/**
 	 * to update an existing Car details 
-	 * uses CarDAO
+	 * <br>uses CarDAO
 	 * <i>not yet implemented</i>
 	 * 
-	 * @param car- existing car object whose details are to be updated
+	 * @param car -- existing car object whose details are to be updated
 	 */
 	void updateCar(Car car);
 	
@@ -67,7 +67,7 @@ public interface CarService {
 	/**
 	 * provides a unique car by searching the database for a car record of particular id.
 	 * 
-	 * @param id - car.id of TripInfoBean from controller
+	 * @param id -- car.id of TripInfoBean from controller
 	 * @return Car object
 	 */
 	 Car findById(Integer id);

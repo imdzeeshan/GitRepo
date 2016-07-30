@@ -33,13 +33,23 @@ public class CarDAOImpl extends AbstractDao implements CarDAO{
 	@SuppressWarnings("unchecked")
 	public List<Car> findAllAvailableCars() {
 		List<Car> cars;
+		
+		//  selecting all such car ids which are booked from Trip(tbl_trip_info)
 		List<Integer> bookedCarIds = (List<Integer>) getSession().createQuery("select t.car.id from Trip t ").list();
+	
+		//  if there are some cars found in Trip(tbl_trip_info) then exclude those cars from result list
+		//	return all cars if there are no such booked cars
 		if(bookedCarIds!=null && bookedCarIds.size()>0)
 		{	
+			
+			//	selecting all cars excluding those which have been found in Trip(tbl_trip_info)
 			Query qry = getSession().createQuery("from Car c where c.id not in :ids").setParameterList("ids", bookedCarIds);
 			cars = (List<Car>) qry.list();
-		}else
+		}
+		else
 		{	
+			
+			//	selecting all cars from Car(tbl_car)
 			Criteria cr = getSession().createCriteria(Car.class);
 			cars = (List<Car>) cr.list();
 		}
@@ -67,6 +77,7 @@ public class CarDAOImpl extends AbstractDao implements CarDAO{
 
 	public Car findById(Integer id) {
 
+	//	loading particular Car object with an id
 		return (Car) getSession().load(Car.class, id);
 	}
 

@@ -21,6 +21,7 @@ import com.zeeshan.hirearide.utils.HireARideUtil;
  * implements TripInfoService interface
  * 
  * 
+ * 
  * @author Muhamad Zeeshan
  * @version 1.0.0
  * @category Service class
@@ -31,6 +32,12 @@ import com.zeeshan.hirearide.utils.HireARideUtil;
 @Transactional
 public class TripInfoServiceImpl implements TripInfoService {
 
+	/**
+	 * tripdao -- TripDAO object autowired
+	 * userService -- UserService object autowired
+	 * carService  -- CarService object autowired
+	 */
+	
 	@Autowired
 	private TripDAO tripdao;
 	
@@ -74,26 +81,30 @@ public class TripInfoServiceImpl implements TripInfoService {
 	 */
 	public TripInfoBean prepareAndSaveTripInfo(TripInfoBean tripInfoBean){
 		
-	
+		// checking email if empty
 		if(tripInfoBean.getEmail()==null || tripInfoBean.getEmail().isEmpty()){
 			System.out.println("email is empty");
 			return null;
 		}
+		// checking username if empty
 		if(tripInfoBean.getUsername()==null || tripInfoBean.getUsername().isEmpty())
 		{
 			System.out.println("username not found");
 			return null;
 		}
+		// checking car_id if empty
 		if(tripInfoBean.getCar_id() < 1)
 		{
 			System.out.println("car not found");
 			return null;
 		}
+		// checking pickupDateTime if empty
 		if(tripInfoBean.getPickupDatetime()==null || tripInfoBean.getDropDatetime() == null)
 		{
 			System.out.println("either pickup date or dropdate is null");
 			return null;
 		}
+		// checking DropDateTime if empty
 		if(tripInfoBean.getDropDatetime().before(tripInfoBean.getPickupDatetime()))
 		{
 			System.out.println("drop date time can not be before pickup datetime");
@@ -133,10 +144,10 @@ public class TripInfoServiceImpl implements TripInfoService {
 	 * thus calculates 24 hours as a day 
 	 * 
 	 * 
-	 * @param pudt         - pickupDateTime (First Date)
-	 * @param ddt		   - dropDateTime (Second Date)
-	 * @param chargePerDay - trip_charge_perday from TripInfoBean object. Charge of selected car for a single day rent.
-	 * @return Double      - total rental charge for calculated days
+	 * @param pudt         -- pickupDateTime (First Date)
+	 * @param ddt		   -- dropDateTime (Second Date)
+	 * @param chargePerDay -- trip_charge_perday from TripInfoBean object. Charge of selected car for a single day rent.
+	 * @return Double      -- total rental charge for calculated days
 	 */
 	Double calculateTotalCharge(Date pudt, Date ddt, BigDecimal chargePerDay ){
 		HireARideUtil util = new HireARideUtil();

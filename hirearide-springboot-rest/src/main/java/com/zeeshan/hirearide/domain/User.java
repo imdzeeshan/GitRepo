@@ -12,14 +12,7 @@ import javax.persistence.Table;
  *<h1>User</h1>
  * It is the domain or model class. also referred as POJO Class
  * Contains the mapping annotaion for ORM purpose. Maps User object to tbl_user in db
- *  
- *  id               - uniquley identifies an object/record
- *  username		 - Name of the user
- *  ssn		         - SocailSecurityNumber of a user(currently not in use in application)
- *  email            - email of the user
- *  password 		 - password of a user (future use: email and password will be serving as the login info for a user)
- *  status           - status field currently for future use
- *  
+ *   
  * 
  * @author Muhamad Zeeshan
  * @version 1.0.0
@@ -31,6 +24,17 @@ import javax.persistence.Table;
 @Table(name = "tbl_user")
 public class User implements java.io.Serializable{
 
+	/**
+	 *  id               -- uniquley identifies an object/record
+	 *  username		 -- Name of the user
+	 *  ssn		         -- SocailSecurityNumber of a user(currently not in use in application)
+	 *  email            -- email of the user
+	 *  password 		 -- password of a user (future use: email and password will be serving as the login info for a user)
+	 *  status           -- status field currently for future use
+	 * 
+	 */
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

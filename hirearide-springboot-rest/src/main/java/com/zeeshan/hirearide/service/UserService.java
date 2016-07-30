@@ -49,7 +49,7 @@ void saveUser(User user);
 	
 	/**
 	 * meant for deleting User Object based on particular email
-	 * <i>not yet implemented</i>
+	 * <br><i>not yet implemented</i>
 	 * 
 	 * @param email
 	 */
@@ -58,7 +58,7 @@ void saveUser(User user);
 	
 	/**
 	 * to update an existing User's details 
-	 * <i>not yet implemented</i>
+	 * <br><i>not yet implemented</i>
 	 * 
 	 * @param user
 	 */

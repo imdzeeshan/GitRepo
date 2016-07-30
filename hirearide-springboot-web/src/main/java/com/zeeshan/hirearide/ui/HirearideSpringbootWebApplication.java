@@ -8,6 +8,8 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 /**
  * @author Muhammad Zeeshan
  * @category Main Class
+ * @version 1.0.0
+ * @since July 2016
  *
  */
 @SpringBootApplication

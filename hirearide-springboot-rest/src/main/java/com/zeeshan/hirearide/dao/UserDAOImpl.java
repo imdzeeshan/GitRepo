@@ -37,6 +37,7 @@ public class UserDAOImpl extends AbstractDao implements UserDAO{
 
 	
 	public User findByEmail(String email) {
+		// selecting unique User Object according to the email in parameter
 		Criteria criteria = getSession().createCriteria(User.class);
 		criteria.add(Restrictions.eq("email", email));
 		return (User) criteria.uniqueResult();
@@ -55,6 +56,7 @@ public class UserDAOImpl extends AbstractDao implements UserDAO{
 	}
 
 	public User findById(Integer id) {
+		// selecting unique User Object according to the id in parameter
 		Criteria criteria = getSession().createCriteria(User.class);
 		criteria.add(Restrictions.eq("id", id));
 		return (User) criteria.uniqueResult();

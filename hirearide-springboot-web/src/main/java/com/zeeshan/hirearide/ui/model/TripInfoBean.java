@@ -14,33 +14,51 @@ import org.springframework.format.annotation.DateTimeFormat;
  * Response data object.
  * 
  * 
+ * 
  * @author Muhammad Zeeshan
  * @version 1.0.0
- * 
+ * @category Bean class
+ * @since July 2016
  */
 public class TripInfoBean {
 
+	
 
+	/**
+	 *  id               -- uniquley identifies an object/record
+	 *  car				 -- A Car POJO (many to one column for tbl_car)
+	 *  car_id		     -- holds car's unique id
+	 *  user_id			 -- holds car's unique id
+	 *  pickupPlace		 -- pick up place where user wants a car to start the journey
+	 *  pickupDatetime   -- Date and Time when user wants to start the journey
+	 *  dropPlace 		 -- drop place where user wants to end his journey
+	 *  dropDatetime	 -- Date and Time Expected to end the journey
+	 *  totalCharge		 -- Total charge in USD applicable to be paid by the user
+	 *  daysOnTrip		 -- No of days a car is on rent for a trip. calculated as difference between pickupDatetime and dropDatetime
+	 *  status           -- status field currently for future use
+	 */
+	
+	
 	private int id;
 
 	private int car_id;
 	
 	private int user_id;
 	
-	/**
-	 * value for pickupPlace field is required. 
-	 * The value for this field is validated in controller.
-	 */
+	//
+	// value for pickupPlace field is required. 
+	// The value for this field is validated in controller.
+	//
 	@NotEmpty(message = "A Pick up Place is required!")
 	private String pickupPlace;
 	
-	//datetime-local field pattern
+	// datetime-local field pattern
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	private Date pickupDatetime;
 
 	private String dropPlace;
 	
-	//datetime-local field pattern
+	// datetime-local field pattern
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	private Date dropDatetime;
 	

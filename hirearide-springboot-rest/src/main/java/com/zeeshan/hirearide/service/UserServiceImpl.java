@@ -27,6 +27,9 @@ import com.zeeshan.hirearide.domain.User;
 @Transactional
 public class UserServiceImpl implements UserService{
 
+	/**
+	 * userdao = Object of UserDAO
+	 */
 	@Autowired
 	private UserDAO userdao;
 	

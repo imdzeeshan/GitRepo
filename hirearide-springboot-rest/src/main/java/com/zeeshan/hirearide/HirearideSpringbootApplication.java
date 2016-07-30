@@ -8,8 +8,10 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 
 /**
  * @author Muhammad Zeeshan
- * @category Main Class
  *
+ * @version 1.0.0
+ * @category Main Class
+ * @since July 2016
  */
 @SpringBootApplication
 public class HirearideSpringbootApplication extends SpringBootServletInitializer{

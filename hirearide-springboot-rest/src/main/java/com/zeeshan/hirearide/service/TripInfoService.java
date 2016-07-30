@@ -22,14 +22,14 @@ public interface TripInfoService {
 	/**
 	 * persists Trip POJO
 	 * 
-	 * @param tripinfo - a Trip object to be saved
+	 * @param tripinfo -- a Trip object to be saved
 	 */
 	void saveTrip(Trip tripinfo);
 
 	
 	/**
 	 * provides the list of all booking information.
-	 * <i>not yet implemented</i>
+	 * <br><i>not yet implemented</i>
 	 * 
 	 * @return List of Trip Information (List<Trip>)
 	 */
@@ -38,18 +38,18 @@ public interface TripInfoService {
 	
 	/**
 	 * meant for returning Trip Object for a user.
-	 * note- user means here particular record from db table user
-	 * in future this method will be changed to return a list of trip infos
-	 * 
+	 * <ul><li>note- user means here particular record from db table user
+	 * <li>in future this method will be changed to return a list of trip infos
+	 * </ul>
 	 * @param userId
-	 * @return Trip- Trip Information for a particular user id
+	 * @return Trip -- Trip Information for a particular user id
 	 */
 	Trip findByUser(Integer userId);
 
 	
 	/**
 	 * meant for deleting Trip Object based on particular userId
-	 * <i>not yet implemented</i>
+	 * <br><i>not yet implemented</i>
 	 * 
 	 * @param userId
 	 */
@@ -58,16 +58,16 @@ public interface TripInfoService {
 	
 	/**
 	 * to update an existing TripInformation details 
-	 * <i>not yet implemented</i>
+	 * <br><i>not yet implemented</i>
 	 * 
 	 * @param tripinfo- existing Trip object whose details are to be updated
 	 */
 	void updateTripInfo(Trip tripinfo);
 	
 	/**
-	 * Saves the Trip Information and user details after calculating total rental charges
-	 * returns the updated tripInfoBean Object.
-	 * 
+	 * <ul><li>Saves the Trip Information and user details after calculating total rental charges
+	 * <li>returns the updated tripInfoBean Object.
+	 * </ul>
 	 * @param tripInfoBean - TripInfoBean Object from controller which is received alongwith post request at "/bookRide". 
 	 * @return updated TripInfoBean Object after saving to db
 	 */

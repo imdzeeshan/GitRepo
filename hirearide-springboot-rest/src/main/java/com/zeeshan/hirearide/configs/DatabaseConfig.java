@@ -12,6 +12,18 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * <h1>DatabaseConfig</h1>
+ * This class does the database configuration considering hibernate as ORM.
+ * It reads essential information from the application.properties file. 
+ * 
+ * 
+ * @author Muhammad Zeeshan
+ * @version 1.0.0
+ * @category Database Config Class
+ * @since July 2016
+ * 
+ */
 @Configuration
 @EnableTransactionManagement
 public class DatabaseConfig {

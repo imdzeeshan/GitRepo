@@ -19,17 +19,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * It is the domain or model class. also referred as POJO Class
  * Contains the mapping annotaion for ORM purpose. Maps Trip object to tbl_trip_info in db
  *  
- *  id               - uniquley identifies an object/record
- *  car				 - A Car POJO (many to one column for tbl_car)
- *  user			 - A User POJO (many to one column for tbl_user)
- *  pickupPlace		 - pick up place where user wants a car to start the journey
- *  pickupDatetime   - Date and Time when user wants to start the journey
- *  dropPlace 		 - drop place where user wants to end his journey
- *  dropDatetime	 - Date and Time Expected to end the journey
- *  totalCharge		 - Total charge in USD applicable to be paid by the user
- *  daysOnTrip		 - No of days a car is on rent for a trip. calculated as difference between pickupDatetime and dropDatetime
- *  status           - status field currently for future use
- *  
  * 
  * @author Muhamad Zeeshan
  * @version 1.0.0
@@ -41,6 +30,20 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name="tbl_trip_info")
 @JsonIgnoreProperties({"car","user"})
 public class Trip implements java.io.Serializable{
+
+	/**
+	 *  id               -- uniquley identifies an object/record
+	 *  car				 -- A Car POJO (many to one column for tbl_car)
+	 *  user			 -- A User POJO (many to one column for tbl_user)
+	 *  pickupPlace		 -- pick up place where user wants a car to start the journey
+	 *  pickupDatetime   -- Date and Time when user wants to start the journey
+	 *  dropPlace 		 -- drop place where user wants to end his journey
+	 *  dropDatetime	 -- Date and Time Expected to end the journey
+	 *  totalCharge		 -- Total charge in USD applicable to be paid by the user
+	 *  daysOnTrip		 -- No of days a car is on rent for a trip. calculated as difference between pickupDatetime and dropDatetime
+	 *  status           -- status field currently for future use
+	 * 
+	 */
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

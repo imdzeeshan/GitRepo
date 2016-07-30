@@ -16,14 +16,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * It is the domain or model class. also referred as POJO Class
  * Contains the mapping annotaion for ORM purpose. Maps Car object to tbl_car in db
  *  
- *  id               - uniquley identifies an object/record
- *  company          - maker of car
- *  model            - model of a car 
- *  seating_capacity - seating capacity of a car
- *  luggage_capacity - luggage capacity of a car (no of travelling bags)
- *  trip_charge_perday - charge for renting a car for a day in USD 
- *  status           - status field currently for future use
- *  
  * 
  * @author Muhamad Zeeshan
  * @version 1.0.0
@@ -36,6 +28,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Car implements java.io.Serializable{
 
+	/**
+	 *  id               -- uniquley identifies an object/record
+	 *  company          -- maker of car
+	 *  model            -- model of a car 
+	 *  seating_capacity -- seating capacity of a car
+	 *  luggage_capacity -- luggage capacity of a car (no of travelling bags)
+	 *  trip_charge_perday -- charge for renting a car for a day in USD 
+	 *  status           -- status field currently for future use
+	 *  
+	 */
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

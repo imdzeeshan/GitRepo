@@ -22,33 +22,34 @@ public interface TripDAO {
 	/**
 	 * persists Trip POJO
 	 * 
-	 * @param tripinfo - a Trip object to be saved
+	 * @param tripinfo -- a Trip object to be saved
 	 */
 	void saveTrip(Trip tripinfo);
 
 	/**
 	 * provides the list of all booking information.
-	 * <i>not yet implemented</i>
+	 * <br><i>not yet implemented</i>
 	 * 
-	 * @return List of Trip Information (List<Trip>)
+	 * @return List<Trip>-- List of Trip Information 
 	 */
 	List<Trip> findAllTripInfos();
 
 
 	/**
 	 * meant for returning Trip Object for a user.
-	 * note- user means here particular record from db table user
-	 * in future this method will be changed to return a list of trip infos
+	 * <ul><li>note- user means here particular record from db table user
+	 * <li>in future this method will be changed to return a list of trip infos
+	 * </ul>
 	 * 
 	 * @param userId
-	 * @return Trip- Trip Information for a particular user id
+	 * @return Trip -- Trip Information for a particular user id
 	 */
 	Trip findByUser(Integer userId);
 
 
 	/**
 	 * meant for deleting Trip Object based on particular userId
-	 * <i>not yet implemented</i>
+	 * <br><i>not yet implemented</i>
 	 * 
 	 * @param userId
 	 */
@@ -57,9 +58,9 @@ public interface TripDAO {
 
 	/**
 	 * to update an existing TripInformation details 
-	 * <i>not yet implemented</i>
+	 * <br><i>not yet implemented</i>
 	 * 
-	 * @param tripinfo- existing Trip object whose details are to be updated
+	 * @param tripinfo -- existing Trip object whose details are to be updated
 	 */
 	void updateTripInfo(Trip tripinfo);
 

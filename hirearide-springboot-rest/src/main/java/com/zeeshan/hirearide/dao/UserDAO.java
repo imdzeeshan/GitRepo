@@ -22,7 +22,7 @@ public interface UserDAO {
 	/**
 	 * persists User POJO
 	 *	
-	 * @param user - a User POJO
+	 * @param user -- a User POJO
 	 */
 	void saveUser(User user);
 
@@ -30,7 +30,7 @@ public interface UserDAO {
 	/**
 	 * provides the list of all users.
 	 *  
-	 * @return List of Users (List<User>)
+	 * @return List<User> -- List of Users 
 	 */
 	List<User> findAllUsers();
 
@@ -47,7 +47,7 @@ public interface UserDAO {
 
 	/**
 	 * meant for deleting User Object based on particular email
-	 * <i>not yet implemented</i>
+	 * <br><i>not yet implemented</i>
 	 * 
 	 * @param email
 	 */
@@ -56,9 +56,9 @@ public interface UserDAO {
 
 	/**
 	 * to update an existing User's details 
-	 * <i>not yet implemented</i>
+	 * <br><i>not yet implemented</i>
 	 * 
-	 * @param user
+	 * @param user -- a User POJO
 	 */
 	void updateUser(User user);
 
