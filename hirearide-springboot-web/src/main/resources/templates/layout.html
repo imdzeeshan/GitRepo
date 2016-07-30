@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<title>Layout</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+	href="../../css/bootstrap.min.css" />
+	
+</head>
+<body>
+	
+		<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Hire A Ride [demo]</a>
+    </div>
+
+    
+
+     
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">About</a></li>
+         <li><a href="#">Help</a></li>
+      </ul>
+<div style="position:fixed;top:50%;left:50%; visibility:hidden;" id="loader"><img src="spinner.gif"/></div>
+  </div>
+</nav>
+		
+		<div layout:fragment="content" id="contentZ">Fake content</div>
+		<div layout:fragment="footer" id="footer"><footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p style="text-align:center;color:white;">Copyright &copy; HireARide 2016</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+</div>
+	
+</body>
+</html>
