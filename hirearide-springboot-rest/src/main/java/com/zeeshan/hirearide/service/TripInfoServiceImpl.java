@@ -15,6 +15,18 @@ import com.zeeshan.hirearide.domain.Trip;
 import com.zeeshan.hirearide.domain.User;
 import com.zeeshan.hirearide.utils.HireARideUtil;
 
+/**
+ *<h1>TripInfoServiceImpl</h1>
+ * provides service layer functionality mainly related to Booking Information 
+ * implements TripInfoService interface
+ * 
+ * 
+ * @author Muhamad Zeeshan
+ * @version 1.0.0
+ * @category Service class
+ * @since July 2016
+ *
+ */
 @Service("tripInfoService")
 @Transactional
 public class TripInfoServiceImpl implements TripInfoService {
@@ -57,6 +69,9 @@ public class TripInfoServiceImpl implements TripInfoService {
 
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.zeeshan.hirearide.service.TripInfoService#prepareAndSaveTripInfo(com.zeeshan.hirearide.beans.TripInfoBean)
+	 */
 	public TripInfoBean prepareAndSaveTripInfo(TripInfoBean tripInfoBean){
 		
 	
@@ -111,6 +126,18 @@ public class TripInfoServiceImpl implements TripInfoService {
 		
 	}
 
+	/**
+	 * calculates the difference in days between two dates 
+	 * and returns the total rental charge for the calculated no of days
+	 * it calculates the difference by subtracting the dates in long.
+	 * thus calculates 24 hours as a day 
+	 * 
+	 * 
+	 * @param pudt         - pickupDateTime (First Date)
+	 * @param ddt		   - dropDateTime (Second Date)
+	 * @param chargePerDay - trip_charge_perday from TripInfoBean object. Charge of selected car for a single day rent.
+	 * @return Double      - total rental charge for calculated days
+	 */
 	Double calculateTotalCharge(Date pudt, Date ddt, BigDecimal chargePerDay ){
 		HireARideUtil util = new HireARideUtil();
 		long days = util.getDifferenceDays(pudt, ddt);
